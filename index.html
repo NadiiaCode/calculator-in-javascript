@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple calculator</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="item input">
+        <form name="form">
+          <input type="text" name="textview" readonly />
+        </form>
+      </div>
+      <div class="item clean" onclick="clean()">C</div>
+      <div class="item back" onclick="back()">DEL</div>
+      <div class="item" onclick="insert('+')">+</div>
+      <div class="item" onclick="insert('-')">-</div>
+      <div class="item" onclick="insert('*')">*</div>
+      <div class="item" onclick="insert('/')">/</div>
+      <div class="item" onclick="insert('7')">7</div>
+      <div class="item" onclick="insert('8')">8</div>
+      <div class="item" onclick="insert('9')">9</div>
+      <div class="item" onclick="insert('(')">(</div>
+      <div class="item" onclick="insert('4')">4</div>
+      <div class="item" onclick="insert('5')">5</div>
+      <div class="item" onclick="insert('6')">6</div>
+      <div class="item" onclick="insert(')')">)</div>
+      <div class="item" onclick="insert('1')">1</div>
+      <div class="item" onclick="insert('2')">2</div>
+      <div class="item" onclick="insert('3')">3</div>
+      <div class="equal item" onclick="equal('=')">=</div>
+      <div class="item zero" onclick="insert('0')">0</div>
+      <div class="item" onclick="insert('.')">.</div>
+    </div>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
+      body {
+        background-color: rgb(161, 190, 190);
+      }
+
+      .container {
+        padding: 10px;
+        max-width: 400px;
+        display: grid;
+        grid-gap: 6px;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        background-color: rgb(95, 90, 90);
+        border-radius: 10px;
+      }
+
+      .item {
+        font-family: "Roboto", sans-serif;
+        font-size: 30px;
+        padding: 23px;
+        display: flex;
+        background-color: rgb(255, 254, 182);
+        color: black;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+
+      form {
+        max-width: 100%;
+      }
+
+      input {
+        width: 100%;
+        height: 75px;
+        font-size: 30px;
+        text-align: right;
+        border: none;
+        outline: none;
+        background-color: rgb(255, 254, 182);
+      }
+
+      .input {
+        grid-column: 1/-1;
+        padding: 0;
+      }
+
+      .clean {
+        grid-column: 1/3;
+      }
+
+      .back {
+        grid-column: 3/-1;
+      }
+
+      .equal {
+        grid-column: 4;
+        grid-row: 6/8;
+      }
+
+      .zero {
+        grid-column: 1/3;
+      }
+    </style>
+
+    <script>
+      function insert(num) {
+        document.form.textview.value = document.form.textview.value + num;
+      }
+
+      function clean() {
+        document.form.textview.value = "";
+      }
+
+      function back() {
+        var exp = document.form.textview.value;
+        document.form.textview.value = exp.substring(0, exp.length - 1);
+      }
+
+      function equal() {
+        var exp = document.form.textview.value;
+        if (exp) {
+          document.form.textview.value = eval(exp);
+        }
+      }
+    </script>
+  </body>
+</html>
